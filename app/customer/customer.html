@@ -1,0 +1,33 @@
+<div id="customerRegisterError" class="alert alert-danger" style="display: none">
+    <strong>Registration error!</strong>
+    <div id="registerErrorMessage"></div>
+</div>
+<div id="customerRegisterWarning" class="alert alert-warning" style="display: none">
+    <strong>Registration warning!</strong>
+    <div id="registerWarningMessage"></div>
+</div>
+
+<div class="customer_container">
+    <form>
+        <h1>{{action}}</h1>
+        <hr class="customer_hr">
+
+        <label for="first_name"><b>First Name</b></label>
+        <input ng-model="first_name" class="customer_input" type="text" placeholder="First Name" name="first_name" id="first_name" required>
+
+        <label for="last_name"><b>Last Name</b></label>
+        <input ng-model="last_name" class="customer_input" type="text" placeholder="Last Name" name="last_name" id="last_name" required>
+
+        <label for="email"><b>Email</b></label>
+        <input ng-model="email" class="customer_input" type="text" placeholder="Email" name="email" id="email" required>
+
+        <label for="phone_number"><b>Phone No.</b></label>
+        <input ng-model="phone_number" class="customer_input" type="text" placeholder="Phone No." name="phone_number" id="phone_number" required>
+
+        <label for="address"><b>Address</b></label>
+        <input ng-model="address" class="customer_input" type="text" placeholder="Address" name="address" id="address" required>
+    </form>
+
+    <button type="button" ng-click="submitCustomer()" class="savebtn">SAVE</button>
+</div>
+

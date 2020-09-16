@@ -1,0 +1,60 @@
+
+<div align="center" class="" ng-controller="CarlistCtrl">
+    <h1>Car list</h1>
+    <hr class="car_hr">
+
+    <div align="=center" class="status_messages">
+        <div id="carDeleteSuccess" class="alert alert-success" style="display: none">
+            <strong>Car deleted!</strong>
+            <div id="deleteSuccessMessage"></div>
+        </div>
+        <div id="carDeleteError" class="alert alert-danger" style="display: none">
+            <strong>Deleting error!</strong>
+            <div id="deleteErrorMessage"></div>
+        </div>
+        <div id="carDeleteWarning" class="alert alert-warning" style="display: none">
+            <strong>Deleting warning!</strong>
+            <div id="deleteWarningMessage"></div>
+        </div>
+    </div>
+
+    <table id="car" class="car">
+            <tr>
+                <td> </td>
+                <td><input ng-model="makeSearch"  type="text" placeholder="Make"></td>
+                <td><input ng-model="modelSearch" type="text" placeholder="Model"></td>
+                <td><input ng-model="bodyTypeSearch"  type="text" placeholder="Body type"></td>
+                <td><input ng-model="yearOfProductionSearch"  type="text" placeholder="Year"></td>
+                <td><input ng-model="mileageSearch"  type="text" placeholder="Mileage"></td>
+                <td><input ng-model="statusSearch"  type="text" placeholder="Status"></td>
+                <td><input ng-model="amountSearch"  type="text" placeholder="Amount"></td>
+                <td><a ng-click="searchClick()"><img  src="assets/icons/search_icon.png"></a></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>No.</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Body Type</th>
+                <th>Year</th>
+                <th>Mileage</th>
+                <th>Status</th>
+                <th>Amount</th>
+            </tr>
+            <tr ng-repeat="car in carArray track by $index">
+                <td>{{$index + 1}}</td>
+                <td>{{car.make}}</td>
+                <td>{{car.model}}</td>
+                <td>{{car.car_body_type}}</td>
+                <td>{{car.year_of_production}}</td>
+                <td>{{car.mileage}}</td>
+                <td>{{car.status}}</td>
+                <td>{{car.amount}}</td>
+                <td><a ng-click="deleteClick(car.car_pk)"><img  src="assets/icons/delete_icon.png"></a> </td>
+                <td><a ng-click="updateClick(car.car_pk)"><img  src="assets/icons/edit_icon.png"></a> </td>
+            </tr>
+    </table>
+    <div class="add_new">
+        <a ng-click="addNewClick()"><img src="assets/icons/add_new_icon.png"></a>
+    </div>
+</div>

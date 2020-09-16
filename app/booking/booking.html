@@ -1,0 +1,39 @@
+<div id="bookingRegisterError" class="alert alert-danger" style="display: none">
+    <strong>Registration error!</strong>
+    <div id="registerErrorMessage"></div>
+</div>
+<div id="bookingRegisterWarning" class="alert alert-warning" style="display: none">
+    <strong>Registration warning!</strong>
+    <div id="registerWarningMessage"></div>
+</div>
+
+<div class="booking_container">
+    <form>
+        <h1>{{action}}</h1>
+        <hr class="booking_hr">
+
+        <label for="customer"><b>Customer</b></label>
+        <select ng-model="selectedCustomerId" id="customer" class="booking_input" ng-change="selectCustomer">
+            <option ng-repeat="customer in customers" value="customer.id">{{customer.first_name}} {{customer.last_name}}</option>
+        </select>
+
+        <label for="car"><b>Car</b></label>
+        <select ng-model="selectedCar" id="car" class="booking_input" ng-change="selectCar">
+            <option ng-repeat="car in cars" value="car.id">{{car.make}} {{car.model}}</option>
+        </select>
+
+<!--        <input ng-model="customer" class="booking_input" type="text" placeholder="Customer" name="customer" id="customer" required>-->
+
+<!--        <label for="car"><b>Car</b></label>-->
+<!--        <input ng-model="car" class="booking_input" type="text" placeholder="Car" name="car" id="car" required>-->
+
+        <label for="date_from"><b>Date from</b></label>
+        <input ng-model="date_from.value" class="booking_input" type="date" placeholder="yyyy-MM-dd" name="date_from" id="date_from" (ngModelChange)="date_from = $event" required>
+
+        <label for="date_to"><b>Date to</b></label>
+        <input ng-model="date_to.value" class="booking_input" type="date" placeholder="yyyy-MM-dd" name="date_to" id="date_to" (ngModelChange)="date_to = $event" required>
+    </form>
+
+    <button type="button" ng-click="submitBooking()" class="savebtn">SAVE</button>
+</div>
+

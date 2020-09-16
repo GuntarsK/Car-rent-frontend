@@ -1,0 +1,57 @@
+
+<div align="center" class="" ng-controller="BookinglistCtrl">
+    <h1>Booking list</h1>
+    <hr class="bookinglist_hr">
+
+    <div align="=center" class="status_messages">
+        <div id="bookingDeleteSuccess" class="alert alert-success" style="display: none">
+            <strong>Booking deleted!</strong>
+            <div id="deleteSuccessMessage"></div>
+        </div>
+        <div id="bookingDeleteError" class="alert alert-danger" style="display: none">
+            <strong>Deleting error!</strong>
+            <div id="deleteErrorMessage"></div>
+        </div>
+        <div id="bookingDeleteWarning" class="alert alert-warning" style="display: none">
+            <strong>Deleting warning!</strong>
+            <div id="deleteWarningMessage"></div>
+        </div>
+    </div>
+
+    <table id="booking" class="booking">
+        <tr>
+            <td> </td>
+            <td><input ng-model="dateOfBookingSearch"  type="text" placeholder="Date of booking"></td>
+            <td><input ng-model="customerSearch" type="text" placeholder="Customer"></td>
+            <td><input ng-model="carSearch"  type="text" placeholder="Car"></td>
+            <td><input ng-model="dateFromSearch"  type="text" placeholder="Date from"></td>
+            <td><input ng-model="dateToSearch"  type="text" placeholder="Date to"></td>
+            <td><input ng-model="amountSearch"  type="text" placeholder="Amount"></td>
+            <td><a ng-click="searchClick()"><img  src="assets/icons/search_icon.png"></a></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>No.</th>
+            <th>Date of booking</th>
+            <th>Customer</th>
+            <th>Car</th>
+            <th>Date from</th>
+            <th>Date to</th>
+            <th>Amount</th>
+        </tr>
+        <tr ng-repeat="booking in bookingArray track by $index">
+            <td>{{$index + 1}}</td>
+            <td>{{booking.date_of_booking}}</td>
+            <td>{{getItemInfoById(customerArray, customer.id)}}</td>
+            <td>{{getItemInfoById(carArray, car.id)}}</td>
+            <td>{{booking.date_from}}</td>
+            <td>{{booking.date_to}}</td>
+            <td>{{booking.amount}}</td>
+            <td><a ng-click="deleteClick(booking.booking_pk)"><img  src="assets/icons/delete_icon.png"></a> </td>
+            <td><a ng-click="updateClick(booking.booking_pk)"><img  src="assets/icons/edit_icon.png"></a> </td>
+        </tr>
+    </table>
+    <div class="add_new">
+        <a ng-click="addNewClick()"><img src="assets/icons/add_new_icon.png"></a>
+    </div>
+</div>
