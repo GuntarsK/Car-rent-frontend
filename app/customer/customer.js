@@ -5,7 +5,7 @@ angular.module('myApp.customer', ['ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/customer', {
             templateUrl: 'customer/customer.html',
-            controller: 'CustomerCtrl'
+            controller: 'CustomerCtrl',
         });
     }])
 
@@ -14,16 +14,30 @@ angular.module('myApp.customer', ['ngRoute'])
 
             var actionUrl = $routeParams.action;
             var id = $routeParams.id;
+            $scope.customerArray = [];
+
 
             if (actionUrl === 'edit') {
-                // GET CUSTOMER BY ID
-
-
                 $scope.action = "Edit";
+                $httpClient.get("http://127.0.0.1:8080/api/rest/customer.svc/customers")
+                    .then(function (response) {
+                        if (response.data.result != null && response.data.result === "SUCCESS") {
+                            $scope.customerArray = response.data.holderList;
+                        }
+                        for (var i = 0; i < $scope.customerArray.length; ++i) {
+                            if ($scope.customerArray[i].customer_pk == id) {
+                                $scope.first_name = $scope.customerArray[i].first_name;
+                                $scope.last_name = $scope.customerArray[i].last_name;
+                                $scope.email = $scope.customerArray[i].email;
+                                $scope.phone_number = $scope.customerArray[i].phone_number;
+                                $scope.address = $scope.customerArray[i].address;
+                            }
+                        }
+                    })
+
             } else {
                 $scope.action = "Register new user";
             }
-
 
 
             $scope.submitCustomer = function () {
@@ -35,7 +49,7 @@ angular.module('myApp.customer', ['ngRoute'])
                     "email": $scope.email,
                     "phone_number": $scope.phone_number,
                     "address": $scope.address,
-                    "password_hash": "123123",
+                    "password_hash": "9999999",
                     "status_in_db": "ACTIVE"
                 }
                 if ($routeParams.action === 'edit') {

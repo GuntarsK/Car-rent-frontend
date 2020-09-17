@@ -17,11 +17,11 @@ angular.module('myApp.customerlist', ['ngRoute'])
             $scope.searchClick = function ($) {
 
                 var customerDto = {
-                    first_name: $scope.first_name,
-                    last_name: $scope.last_name,
-                    email: $scope.email,
-                    phone_number: $scope.phone_number,
-                    address: $scope.address,
+                    first_name: $scope.firstNameSearch,
+                    last_name: $scope.lastNameSearch,
+                    email: $scope.emailSearch,
+                    phone_number: $scope.phoneNumberSearch,
+                    address: $scope.addressSearch,
                 }
 
                 var submitData = JSON.stringify(customerDto, function (key, value) {
