@@ -13,7 +13,7 @@
         <hr class="booking_hr">
 
         <label for="customer"><b>Customer</b></label>
-        <select ng-model="selectedCustomerId" id="customer" class="booking_input" ng-change="selectCustomer">
+        <select ng-model="selectedCustomer" id="customer" class="booking_input" ng-change="selectCustomer">
             <option ng-repeat="customer in customers" value="customer.id">{{customer.first_name}} {{customer.last_name}}</option>
         </select>
 
@@ -21,11 +21,6 @@
         <select ng-model="selectedCar" id="car" class="booking_input" ng-change="selectCar">
             <option ng-repeat="car in cars" value="car.id">{{car.make}} {{car.model}}</option>
         </select>
-
-<!--        <input ng-model="customer" class="booking_input" type="text" placeholder="Customer" name="customer" id="customer" required>-->
-
-<!--        <label for="car"><b>Car</b></label>-->
-<!--        <input ng-model="car" class="booking_input" type="text" placeholder="Car" name="car" id="car" required>-->
 
         <label for="date_from"><b>Date from</b></label>
         <input ng-model="date_from.value" class="booking_input" type="date" placeholder="yyyy-MM-dd" name="date_from" id="date_from" (ngModelChange)="date_from = $event" required>

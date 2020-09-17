@@ -14,12 +14,27 @@ angular.module('myApp.booking', ['ngRoute'])
 
             var actionUrl = $routeParams.action;
             var id = $routeParams.id;
+            $scope.bookingArray = [];
 
             if (actionUrl === 'edit') {
-                // GET BOOKING BY ID
-
-
                 $scope.action = "Edit";
+
+                $httpClient.get("http://127.0.0.1:8080/api/rest/booking.svc/bookings")
+                    .then(function (response) {
+                        if (response.data.result != null && response.data.result === "SUCCESS") {
+                            $scope.bookingArray = response.data.holderList;
+                        }
+                        for (var i = 0; i < $scope.bookingArray.length; ++i) {
+                            if ($scope.bookingArray[i].booking_pk == id) {
+                                console.log("works");
+                                $scope.selectedCustomer = $scope.bookingArray[i].customer;
+                                $scope.car = $scope.bookingArray[i].car;
+                                $scope.date_from = $scope.bookingArray[i].date_from;
+                                $scope.date_to = $scope.bookingArray[i].date_to;
+                            }
+                        }
+                    })
+
             } else {
                 $scope.action = "Create new booking";
             }

@@ -45,11 +45,21 @@ angular.module('myApp.bookinglist', ['ngRoute'])
             }
 
 
-            $scope.getItemInfoById = function(array, idToFind) {
+            $scope.getCustomerInfoById = function(array, idToFind) {
                 if (array != null) {
-                    for (var i = 0; i < array.lenght; ++i) {
-                        if (array[i].id === idToFind) {
-                            return array[i].name;
+                    for (var i = 0; i < array.length; i++) {
+                        if (array[i].customer_pk === idToFind) {
+                            return array[i].first_name + " " + array[i].last_name;
+                        }
+                    }
+                }
+            }
+
+            $scope.getCarInfoById = function(array, idToFind) {
+                if (array != null) {
+                    for (var i = 0; i < array.length; i++) {
+                        if (array[i].car_pk === idToFind) {
+                            return array[i].model + " " + array[i].make;
                         }
                     }
                 }

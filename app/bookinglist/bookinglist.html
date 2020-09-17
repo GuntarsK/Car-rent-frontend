@@ -42,8 +42,8 @@
         <tr ng-repeat="booking in bookingArray track by $index">
             <td>{{$index + 1}}</td>
             <td>{{booking.date_of_booking}}</td>
-            <td>{{getItemInfoById(customerArray, customer.id)}}</td>
-            <td>{{getItemInfoById(carArray, car.id)}}</td>
+            <td>{{getCustomerInfoById(customerArray, $index + 1)}}</td>
+            <td>{{getCarInfoById(carArray, $index + 1)}}</td>
             <td>{{booking.date_from}}</td>
             <td>{{booking.date_to}}</td>
             <td>{{booking.amount}}</td>
