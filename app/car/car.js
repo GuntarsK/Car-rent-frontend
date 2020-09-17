@@ -18,16 +18,26 @@ angular.module('myApp.car', ['ngRoute'])
         $scope.statusArray = ["RENTED", "AVAILABLE", "UNAVAILABLE"];
 
         if (actionUrl === 'edit') {
-            // GET CAR BY ID
-
-            // $scope.carArray = response.data.holderList;
-            // for (var i = 0; i < $scope.carArray.length; ++i) {
-            //     if ($scope.carArray[i].status_in_db === "ACTIVE") {
-            //         $scope.activeCarArray.push($scope.carArray[i]);
-            //     }
-            // }
-
             $scope.action = "Edit";
+
+            $httpClient.get("http://127.0.0.1:8080/api/rest/car.svc/cars")
+                .then(function (response) {
+                    if (response.data.result != null && response.data.result === "SUCCESS") {
+                        $scope.carArray = response.data.holderList;
+                    }
+                    for (var i = 0; i < $scope.carArray.length; ++i) {
+                        if ($scope.carArray[i].car_pk == id) {
+                            $scope.make = $scope.carArray[i].make;
+                            $scope.model = $scope.carArray[i].model;
+                            $scope.car_body_type = $scope.carArray[i].car_body_type;
+                            $scope.year_of_production = $scope.carArray[i].year_of_production;
+                            $scope.mileage = $scope.carArray[i].mileage;
+                            $scope.status = $scope.carArray[i].status;
+                            $scope.amount = $scope.carArray[i].amount;
+                        }
+                    }
+                })
+
         } else {
             $scope.action = "Add new car";
         }
