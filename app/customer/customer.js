@@ -65,6 +65,7 @@ angular.module('myApp.customer', ['ngRoute'])
 
                             if (response.data.result != null && response.data.result === "SUCCESS") {
                                 window.location.href="#!/customerlist";
+
                             } else {
                                 if (response.data.errorType === "ERROR") {
                                     document.getElementById("customerRegisterError").style.display = 'block';
@@ -93,7 +94,8 @@ angular.module('myApp.customer', ['ngRoute'])
 
                             if (response.data.result != null && response.data.result === "SUCCESS") {
                                 window.location.href="#!/customerlist";
-                            } else {
+
+                               } else {
                                 if (response.data.errorType === "ERROR") {
                                     document.getElementById("customerRegisterError").style.display = 'block';
                                     document.getElementById("customerRegisterWarning").style.display = 'none';
@@ -113,6 +115,10 @@ angular.module('myApp.customer', ['ngRoute'])
                             }
                         })
                 }
+            }
+
+            $scope.returnClick = function () {
+                window.location.href="#!/customerlist";
             }
 
 

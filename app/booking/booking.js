@@ -15,6 +15,9 @@ angular.module('myApp.booking', ['ngRoute'])
             var actionUrl = $routeParams.action;
             var id = $routeParams.id;
             $scope.bookingArray = [];
+            $scope.customerArray = [];
+            $scope.carArray = [];
+            $scope.availableCarArray = [];
 
             if (actionUrl === 'edit') {
                 $scope.action = "Edit";
@@ -24,11 +27,43 @@ angular.module('myApp.booking', ['ngRoute'])
                         if (response.data.result != null && response.data.result === "SUCCESS") {
                             $scope.bookingArray = response.data.holderList;
                         }
+
+                        $scope.options = $scope.customerArray;
+                        $scope.selectedOption = $scope.options[1];
+
+                        // POPULATING CUSTOMER DROP-DOWN FIELD:
+                        $httpClient.get("http://127.0.0.1:8080/api/rest/customer.svc/customers")
+                            .then(function (response) {
+                                if (response.data.result != null && response.data.result === "SUCCESS") {
+                                    $scope.customerArray = response.data.holderList;
+                                }
+                                for (var i = 0; i < $scope.bookingArray.length; ++i) {
+                                    if ($scope.bookingArray[i].booking_pk == id) {
+                                        console.log("name:"+ $scope.customerArray[i].first_name);
+                                        $scope.selectedCustomer = $scope.customerArray[i].first_name + " " + $scope.customerArray[i].last_name;
+                                    }
+                                }
+                            })
+
+                        // POPULATING CAR DROP-DOWN FIELD:
+                        $httpClient.get("http://127.0.0.1:8080/api/rest/car.svc/cars")
+                            .then(function (response) {
+                                if (response.data.result != null && response.data.result === "SUCCESS") {
+                                    $scope.carArray = response.data.holderList;
+                                }
+                                for (var i = 0; i < $scope.bookingArray.length; ++i) {
+                                    if ($scope.bookingArray[i].booking_pk == id) {
+                                        console.log("name:"+ $scope.carArray[i].make);
+                                        $scope.selectedCar = $scope.carArray[i].make + " " + $scope.carArray[i].model;
+                                    }
+                                }
+                            })
+
+
+                        // POPULATING DATE FIELDS:
                         for (var i = 0; i < $scope.bookingArray.length; ++i) {
                             if ($scope.bookingArray[i].booking_pk == id) {
                                 console.log("works");
-                                $scope.selectedCustomer = $scope.bookingArray[i].customer;
-                                $scope.car = $scope.bookingArray[i].car;
                                 $scope.date_from = $scope.bookingArray[i].date_from;
                                 $scope.date_to = $scope.bookingArray[i].date_to;
                             }
@@ -39,7 +74,19 @@ angular.module('myApp.booking', ['ngRoute'])
                 $scope.action = "Create new booking";
             }
 
-            $scope.example = {
+
+            $httpClient.get("http://127.0.0.1:8080/api/rest/customer.svc/customers")
+                .then(function (response) {
+                    if (response.data.result != null && response.data.result === "SUCCESS") {
+                        $scope.customerArray = response.data.holderList;
+                    }
+                    console.log(response);
+                })
+
+            $scope.dateFrom = {
+                value: new Date()
+            }
+            $scope.dateTo = {
                 value: new Date()
             }
 
@@ -53,7 +100,14 @@ angular.module('myApp.booking', ['ngRoute'])
             $httpClient.get("http://127.0.0.1:8080/api/rest/car.svc/cars")
                 .then(function (response) {
                     if (response.data.result != null && response.data.result === "SUCCESS") {
-                        $scope.cars = response.data.holderList;
+                        $scope.carArray = response.data.holderList;
+
+                        for (var i = 0; i < $scope.carArray.length; ++i) {
+                            if ($scope.carArray[i].status === "AVAILABLE") {
+                                $scope.availableCarArray.push($scope.carArray[i]);
+                                console.log($scope.carArray[i].model);
+                            }
+                        }
                     }
                 })
 
@@ -130,6 +184,10 @@ angular.module('myApp.booking', ['ngRoute'])
                             }
                         })
                 }
+            }
+
+            $scope.returnClick = function () {
+                window.location.href="#!/bookinglist";
             }
 
 

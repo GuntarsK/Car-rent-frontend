@@ -14,6 +14,7 @@ angular.module('myApp.bookinglist', ['ngRoute'])
 
             $scope.customerArray = [];
             $scope.carArray = [];
+            $scope.availableCarArray = [];
             $scope.bookingArray = [];
 
             $scope.searchClick = function ($) {

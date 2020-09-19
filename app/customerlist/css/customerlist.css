@@ -24,21 +24,3 @@ th {
 td, th {
     padding: 10px !important;
 }
-
-img {
-    height: 30px;
-}
-
-img:hover {
-    opacity: 0.7;
-}
-
-.add_new {
-    width: 80%;
-    text-align: left;
-}
-
-.add_new img {
-    margin-left: 5px;
-    margin-top: 5px;
-}

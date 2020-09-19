@@ -1,3 +1,6 @@
+<div id="customerRegisterSuccess" class="alert alert-success" style="display: none">
+    <strong>Customer details updated</strong>
+</div>
 <div id="customerRegisterError" class="alert alert-danger" style="display: none">
     <strong>Registration error!</strong>
     <div id="registerErrorMessage"></div>
@@ -29,5 +32,6 @@
     </form>
 
     <button type="button" ng-click="submitCustomer()" class="savebtn">SAVE</button>
+    <button type="button" ng-click="returnClick()" class="savebtn">RETURN TO LIST</button>
 </div>
 

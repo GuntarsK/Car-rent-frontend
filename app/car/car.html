@@ -8,36 +8,38 @@
 </div>
 
 <div class="car_container">
-<form>
-    <h1>{{action}}</h1>
-    <hr class="car_hr">
+    <form>
+        <h1>{{action}}</h1>
+        <hr class="car_hr">
 
-    <label for="make"><b>Make</b></label>
-    <input ng-model="make" class="car_input" type="text" placeholder="Make" name="make" id="make" required>
+        <label for="make"><b>Make</b></label>
+        <input ng-model="make" class="car_input" type="text" placeholder="Make" name="make" id="make" required>
 
-    <label for="model"><b>Model</b></label>
-    <input ng-model="model" class="car_input" type="text" placeholder="Model" name="model" id="model" required>
+        <label for="model"><b>Model</b></label>
+        <input ng-model="model" class="car_input" type="text" placeholder="Model" name="model" id="model" required>
 
-    <label for="body_type"><b>Body type</b></label>
-    <select ng-model="car_body_type" id="body_type"  class="car_input"  ng-change="selectCategory" required>
-        <option ng-repeat="body_type in bodyTypeArray">{{body_type}}</option>
-    </select>
+        <label for="body_type"><b>Body type</b></label>
+        <select ng-model="car_body_type" id="body_type"  class="car_input"  ng-change="selectCategory" required>
+            <option ng-repeat="body_type in bodyTypeArray">{{body_type}}</option>
+        </select>
 
-    <label for="year"><b>Year of production</b></label>
-    <input ng-model="year_of_production" class="car_input" type="text" placeholder="Year of production" name="year" id="year" required>
+        <label for="year"><b>Year of production</b></label>
+        <input ng-model="year_of_production" class="car_input" type="text" placeholder="Year of production" name="year" id="year" required>
 
-    <label for="mileage"><b>Mileage</b></label>
-    <input ng-model="mileage" class="car_input" type="text" placeholder="Mileage" name="mileage" id="mileage" required>
+        <label for="mileage"><b>Mileage</b></label>
+        <input ng-model="mileage" class="car_input" type="text" placeholder="Mileage" name="mileage" id="mileage" required>
 
-    <label for="status"><b>Status</b></label>
-    <select ng-model="status" id="status"  class="car_input"  ng-change="selectCategory" required>
-        <option ng-repeat="status in statusArray">{{status}}</option>
-    </select>
+        <label for="status"><b>Status</b></label>
+        <select ng-model="status" id="status"  class="car_input"  ng-change="selectCategory" required>
+            <option ng-repeat="status in statusArray">{{status}}</option>
+        </select>
 
-    <label for="amount"><b>Amount</b></label>
-    <input ng-model="amount" class="car_input" type="text" placeholder="Amount" name="amount" id="amount" required>
-</form>
+        <label for="amount"><b>Amount</b></label>
+        <input ng-model="amount" class="car_input" type="text" placeholder="Amount" name="amount" id="amount" required>
+    </form>
 
     <button type="button" ng-click="submitCar()" class="savebtn">SAVE</button>
+    <button type="button" ng-click="returnClick()" class="savebtn">RETURN TO LIST</button>
+
 </div>
 

@@ -21,13 +21,13 @@
     <table id="booking" class="booking">
         <tr>
             <td> </td>
-            <td><input ng-model="dateOfBookingSearch"  type="text" placeholder="Date of booking"></td>
+            <td><input ng-model="dateOfBookingSearch" type="text" placeholder="Date of booking"></td>
             <td><input ng-model="customerSearch" type="text" placeholder="Customer"></td>
-            <td><input ng-model="carSearch"  type="text" placeholder="Car"></td>
-            <td><input ng-model="dateFromSearch"  type="text" placeholder="Date from"></td>
-            <td><input ng-model="dateToSearch"  type="text" placeholder="Date to"></td>
-            <td><input ng-model="amountSearch"  type="text" placeholder="Amount"></td>
-            <td><a ng-click="searchClick()"><img  src="assets/icons/search_icon.png"></a></td>
+            <td><input ng-model="carSearch" type="text" placeholder="Car"></td>
+            <td><input ng-model="dateFromSearch" type="text" placeholder="Date from"></td>
+            <td><input ng-model="dateToSearch" type="text" placeholder="Date to"></td>
+            <td><input ng-model="amountSearch" type="text" placeholder="Amount"></td>
+            <td><a style="font-size: 2em; color: black;" ng-click="searchClick()"><i class="fa fa-search"></i></a></td>
             <td></td>
         </tr>
         <tr>
@@ -37,7 +37,7 @@
             <th>Car</th>
             <th>Date from</th>
             <th>Date to</th>
-            <th>Amount</th>
+            <th>Amount, EUR</th>
         </tr>
         <tr ng-repeat="booking in bookingArray track by $index">
             <td>{{$index + 1}}</td>
@@ -47,11 +47,11 @@
             <td>{{booking.date_from}}</td>
             <td>{{booking.date_to}}</td>
             <td>{{booking.amount}}</td>
-            <td><a ng-click="deleteClick(booking.booking_pk)"><img  src="assets/icons/delete_icon.png"></a> </td>
-            <td><a ng-click="updateClick(booking.booking_pk)"><img  src="assets/icons/edit_icon.png"></a> </td>
+            <td><a style="font-size: 2em; color: Tomato;" ng-click="deleteClick(booking.booking_pk)"><i class="fa fa-trash"></i></a></td>
+            <td><a style="font-size: 2em; color: Dodgerblue;" ng-click="updateClick(booking.booking_pk)"><i class="fa fa-edit"></i></a></td>
         </tr>
     </table>
     <div class="add_new">
-        <a ng-click="addNewClick()"><img src="assets/icons/add_new_icon.png"></a>
+        <td><a style="font-size: 3em; color: #28a745;" ng-click="addNewClick()"><i class="fa fa-plus"></i></a></td>
     </div>
 </div>

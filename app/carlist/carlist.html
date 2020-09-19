@@ -28,7 +28,7 @@
                 <td><input ng-model="mileageSearch"  type="text" placeholder="Mileage"></td>
                 <td><input ng-model="statusSearch"  type="text" placeholder="Status"></td>
                 <td><input ng-model="amountSearch"  type="text" placeholder="Amount"></td>
-                <td><a ng-click="searchClick()"><img  src="assets/icons/search_icon.png"></a></td>
+                <td><a style="font-size: 2em; color: black;" ng-click="searchClick()"><i class="fa fa-search"></i></a></td>
                 <td></td>
             </tr>
             <tr>
@@ -50,11 +50,11 @@
                 <td>{{car.mileage}}</td>
                 <td>{{car.status}}</td>
                 <td>{{car.amount}}</td>
-                <td><a ng-click="deleteClick(car.car_pk)"><img  src="assets/icons/delete_icon.png"></a> </td>
-                <td><a ng-click="updateClick(car.car_pk)"><img  src="assets/icons/edit_icon.png"></a> </td>
+                <td><a style="font-size: 2em; color: Tomato;" ng-click="deleteClick(car.car_pk)"><i class="fa fa-trash"></i></a></td>
+                <td><a style="font-size: 2em; color: Dodgerblue;" ng-click="updateClick(car.car_pk)"><i class="fa fa-edit"></i></a></td>
             </tr>
     </table>
     <div class="add_new">
-        <a ng-click="addNewClick()"><img src="assets/icons/add_new_icon.png"></a>
+        <td><a style="font-size: 3em; color: #28a745;" ng-click="addNewClick()"><i class="fa fa-plus"></i></a></td>
     </div>
 </div>

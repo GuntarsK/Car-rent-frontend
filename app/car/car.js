@@ -120,5 +120,9 @@ angular.module('myApp.car', ['ngRoute'])
             }
         }
 
+        $scope.returnClick = function () {
+            window.location.href="#!/carlist";
+        }
+
 
     }]);
