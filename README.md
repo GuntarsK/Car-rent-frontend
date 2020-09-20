@@ -1,4 +1,4 @@
-### Car Rental frontend
+### Car Rental app front-end part
 
 Front-end for Car Rent Spring Boot app: https://github.com/GuntarsK/Car-Rent-Demo-App
 
