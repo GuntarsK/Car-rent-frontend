@@ -17,8 +17,8 @@ You must have Node.js and its package manager (npm) installed.
 Clone the `Car-rent-frontend` repository using git:
 
 ```
-git https://github.com/GuntarsK/Car-Rent-Demo-App.git
-cd Car-Rent-Demo-App
+git https://github.com/GuntarsK/Car-rent-frontend.git
+cd Car-rent-frontend
 ```
 
 
