@@ -17,8 +17,8 @@ You must have Node.js and its package manager (npm) installed.
 Clone the `Car-rent-frontend` repository using git:
 
 ```
-git clone https://github.com/angular/angular-seed.git
-cd angular-seed
+git https://github.com/GuntarsK/Car-Rent-Demo-App.git
+cd Car-Rent-Demo-App
 ```
 
 
@@ -32,5 +32,5 @@ this server is:
 npm start
 ```
 
-Web app vailable on: http://localhost:8000/
+Web app available on: http://localhost:8000/
 
