@@ -9,18 +9,14 @@
 
 <div class="booking_container">
     <form>
-        <h1>Create new booking</h1>
+        <h1>Edit booking info</h1>
         <hr class="booking_hr">
 
         <label for="customer"><b>Customer</b></label>
-        <select ng-model="selectedCustomer.customer_pk" id="customer" class="booking_input" required>
-            <option ng-repeat="customer in customers" ng-value="customer.customer_pk">{{customer.first_name}} {{customer.last_name}}</option>
-        </select>
+        <input ng-model="customer" class="customer_input" type="text" ng-disabled="customer" name="customer" id="customer">
 
         <label for="car"><b>Car</b></label>
-        <select ng-model="selectedCar.car_pk" id="car" class="booking_input" required>
-            <option ng-repeat="car in availableCarArray" ng-value="car.car_pk">{{car.make}} {{car.model}}</option>
-        </select>
+        <input ng-model="car" class="car_input" type="text" ng-disabled="car" name="car" id="car">
 
         <label for="date_from"><b>Date from</b></label>
         <input type="date" id="date_from" name="" ng-model="dateFrom.value"

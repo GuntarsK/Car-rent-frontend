@@ -46,21 +46,21 @@ angular.module('myApp.bookinglist', ['ngRoute'])
             }
 
 
-            $scope.getCustomerInfoById = function(array, idToFind) {
-                if (array != null) {
-                    for (var i = 0; i < array.length; i++) {
-                        if (array[i].customer_pk === idToFind) {
-                            return array[i].first_name + " " + array[i].last_name;
+            $scope.getCustomerInfoById = function(bookingArray, customerArray, customer_pk) {
+                if (bookingArray != null) {
+                    for (var i = 0; i < bookingArray.length; i++) {
+                        if (bookingArray[i].customer_pk === customer_pk) {
+                            return customerArray[customer_pk-1].first_name + " " + customerArray[customer_pk-1].last_name;
                         }
                     }
                 }
             }
 
-            $scope.getCarInfoById = function(array, idToFind) {
-                if (array != null) {
-                    for (var i = 0; i < array.length; i++) {
-                        if (array[i].car_pk === idToFind) {
-                            return array[i].model + " " + array[i].make;
+            $scope.getCarInfoById = function(bookingArray, carArray, car_pk) {
+                if (bookingArray != null) {
+                    for (var i = 0; i < bookingArray.length; i++) {
+                        if (bookingArray[i].car_pk === car_pk) {
+                            return carArray[car_pk-1].make + " " + carArray[car_pk-1].model;
                         }
                     }
                 }
@@ -140,7 +140,7 @@ angular.module('myApp.bookinglist', ['ngRoute'])
 
 
             $scope.updateClick = function (bookingPk) {
-                window.location.href="#!/booking?action=edit&id=" + bookingPk;
+                window.location.href="#!/bookingedit?action=edit&id=" + bookingPk;
             }
 
             $scope.addNewClick = function () {

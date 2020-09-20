@@ -10,6 +10,7 @@ angular.module('myApp', [
   'myApp.carlist',
   'myApp.customerlist',
   'myApp.bookinglist',
+  'myApp.bookingedit',
   'myApp.version'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {

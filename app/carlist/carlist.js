@@ -70,7 +70,7 @@ angular.module('myApp.carlist', ['ngRoute'])
                             document.getElementById("deleteSuccessMessage").textContent = response.data.message;
                             $timeout( function () {
                                 document.getElementById("carDeleteSuccess").style.display = 'none';
-                            }, 2000);
+                            }, 3000);
                         }
                     } else {
                         if (response.data.errorType === "ERROR") {
@@ -80,7 +80,7 @@ angular.module('myApp.carlist', ['ngRoute'])
                             document.getElementById("deleteErrorMessage").textContent = response.data.message;
                             $timeout( function () {
                                 document.getElementById("carDeleteError").style.display = 'none';
-                            }, 2000);
+                            }, 3000);
 
                         } else if (response.data.errorType === "WARNING") {
                             document.getElementById("carDeleteError").style.display = 'none';
@@ -89,7 +89,7 @@ angular.module('myApp.carlist', ['ngRoute'])
                             document.getElementById("deleteWarningMessage").textContent = response.data.message;
                             $timeout( function () {
                                 document.getElementById("carDeleteWarning").style.display = 'none';
-                            }, 2000);
+                            }, 3000);
                         }
                     }
                 })

@@ -1,21 +1,72 @@
 'use strict';
 
-angular.module('myApp.booking', ['ngRoute'])
+angular.module('myApp.bookingedit', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/booking', {
-            templateUrl: 'booking/booking.html',
-            controller: 'BookingCtrl'
+        $routeProvider.when('/bookingedit', {
+            templateUrl: 'bookingedit/bookingedit.html',
+            controller: 'BookingeditCtrl'
         });
     }])
 
-    .controller('BookingCtrl', ['$scope', '$http', '$routeParams', '$timeout',
+    .controller('BookingeditCtrl', ['$scope', '$http', '$routeParams', '$timeout',
         function($scope, $httpClient, $routeParams, $timeout) {
 
+            var actionUrl = $routeParams.action;
+            var id = $routeParams.id;
             $scope.bookingArray = [];
             $scope.customerArray = [];
             $scope.carArray = [];
             $scope.availableCarArray = [];
+
+            if (actionUrl === 'edit') {
+                $scope.action = "Edit";
+
+                $httpClient.get("http://127.0.0.1:8080/api/rest/booking.svc/bookings")
+                    .then(function (response) {
+                        if (response.data.result != null && response.data.result === "SUCCESS") {
+                            $scope.bookingArray = response.data.holderList;
+                        }
+
+                        $httpClient.get("http://127.0.0.1:8080/api/rest/customer.svc/customers")
+                            .then(function (response) {
+                                if (response.data.result != null && response.data.result === "SUCCESS") {
+                                    $scope.customerArray = response.data.holderList;
+                                }
+                                for (var i = 0; i < $scope.bookingArray.length; ++i) {
+                                    if ($scope.bookingArray[i].booking_pk == id) {
+                                        $scope.customer = $scope.customerArray[$scope.bookingArray[i].customer_pk - 1].first_name + " "
+                                            + $scope.customerArray[$scope.bookingArray[i].customer_pk - 1].last_name;
+                                    }
+                                }
+                            })
+
+                        $httpClient.get("http://127.0.0.1:8080/api/rest/car.svc/cars")
+                            .then(function (response) {
+                                if (response.data.result != null && response.data.result === "SUCCESS") {
+                                    $scope.carArray = response.data.holderList;
+                                }
+                                for (var i = 0; i < $scope.bookingArray.length; ++i) {
+                                    if ($scope.bookingArray[i].booking_pk == id) {
+                                        $scope.car = $scope.carArray[$scope.bookingArray[i].car_pk - 1].make + " "
+                                            + $scope.carArray[$scope.bookingArray[i].car_pk - 1].model;
+                                    }
+                                }
+                            })
+
+                        for (var i = 0; i < $scope.bookingArray.length; ++i) {
+                            if ($scope.bookingArray[i].booking_pk == id) {
+                                $scope.date_from = $scope.bookingArray[i].date_from;
+                                $scope.date_to = $scope.bookingArray[i].date_to;
+                                console.log($scope.bookingArray[i].date_from);
+                            }
+                        }
+                    })
+
+            } else {
+                $scope.action = "Create new booking";
+            }
+
 
             $httpClient.get("http://127.0.0.1:8080/api/rest/customer.svc/customers")
                 .then(function (response) {
@@ -72,7 +123,8 @@ angular.module('myApp.booking', ['ngRoute'])
 
                 var submitData = JSON.stringify(bookingDto);
 
-                    $httpClient.post("http://127.0.0.1:8080/api/rest/booking.svc/booking", submitData)
+                if ($routeParams.action === 'edit') {
+                    $httpClient.put("http://127.0.0.1:8080/api/rest/booking.svc/booking", submitData)
                         .then(function (response) {
                             console.log(response);
 
@@ -98,6 +150,7 @@ angular.module('myApp.booking', ['ngRoute'])
                             }
                         })
 
+                }
             }
 
             $scope.returnClick = function () {
